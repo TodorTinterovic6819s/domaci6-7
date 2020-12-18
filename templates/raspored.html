@@ -1,0 +1,109 @@
+<html>
+	<head>
+        <title> Home Page </title>
+        <style>
+            .container {
+                width: 800px;
+                margin: 20px auto;
+            }
+
+            .nastavnici {
+                width: 100%;
+                display: flex;
+            }
+
+            .nastavnici table{
+                width: 50%;
+            }
+
+            #raspored {
+                font-family: Arial, Helvetica, sans-serif;
+                border-collapse: collapse;
+                width: 100%;
+            }
+
+            
+            #raspored td, #raspored th {
+                border: 1px solid #ddd;
+                padding: 8px;
+            }
+            
+            #raspored tr:nth-child(even){background-color: rgb(9, 9, 146);}
+            #raspored tr:nth-child(odd){background-color: rgb(104, 104, 228);}
+            
+            #raspored th {
+                padding-top: 12px;
+                padding-bottom: 12px;
+                text-align: left;
+                background-color: #0b0b0c;
+                color: white;
+            }
+            #podaci {
+
+                padding-top: 15px;
+                text-align: center;
+            }
+            #podaci th {
+
+                text-align: center;
+
+
+            }
+        </style>
+    </head>
+    <body>   
+       <div class="container">
+           <!--<form action="main.py" method="POST">
+               <input name="search" type=text>
+               <input type="submit">
+           </form>-->
+          <h2>Todor Tinterovic s68/19</h2>
+            <table id="raspored">
+                <tr>
+                    <th>Id</th>
+                    <th>predmet</th>
+                    <th>tip</th>
+                    <th>nastavnik</th>
+                    <th>grupe</th>
+                    <th>dan</th>
+                    <th>termin</th>
+                    <th>ucionica</th>
+                </tr>
+                {% for item in raspored %}
+                <tr>
+                    <td>{{ item[0] }}</td>
+                    <td>{{ item[1] }}</td>
+                    <td>{{item[2]}}</td>
+                    <td>{{ item[3] }}</td>
+                    <td>{{ item[4] }}</td>
+                    <td>{{ item[5] }}</td>
+                    <td>{{ item[6] }}</td>
+                    <td>{{ item[7] }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+            <div class="nastavnici">
+                <table>
+                    <tr>
+                        <th>nastavnici</th>
+                    </tr>
+                    {% for item in nastavnici %}
+                    <tr>
+                        <td><a href="/nastavnik/{{item[0]}}">{{ item[0] }}</a></td>
+                    </tr>
+                    {% endfor %}                    
+                </table>
+                <table id="podaci">
+                    <tr>
+                        <th>Ucionice</th>
+                    </tr>
+                    {% for item in ucionice %}
+                    <tr>
+                        <td><a href="/ucionica/{{ item[0]}}">{{ item[0]}}</a></td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+       </div>
+    </body>
+</html>
